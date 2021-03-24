@@ -20,8 +20,8 @@ class AdminPage extends React.Component {
         return (
         
         <div>
-        <AddPost />
         <DeletePost />
+        <AddPost />
         </div>
   
         

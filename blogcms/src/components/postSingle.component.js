@@ -19,6 +19,9 @@ class PostSingle extends React.Component {
       const requestOptions = {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+        secret: this.props.secret, 
+        })
     };
       fetch(globals.postAPI+"/"+this.props.postID, requestOptions)
       .then(response => response.json())

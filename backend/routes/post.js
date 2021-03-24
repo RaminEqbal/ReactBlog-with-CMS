@@ -10,38 +10,66 @@ const router = require("express").Router();
  */
 let Post = require("../model/post.model");
 
+
+let User = require("../model/user.model");
+
+
 /**
  * Get all Blogposts
  */
 router.route("/").get((req,res) =>{
     Post.find()
-        .then(posts => res.json(posts))
-        .catch(err => res.status(400).json('Error: '+ err));
-} );
+    .then(posts => res.json(posts))
+    .catch(err => res.status(400).json('Error: '+ err));
+});
+
+router.route("/collections").get(async (req,res) =>{
+    Post.find({},{category:1, _id:0})
+    .then(posts => res.json(posts))
+    .catch(err => res.status(400).json('Error: '+ err));
+});
+
+
+
+
 
 
 /**
  * Reads JSON Data of a post requests of $DIR/add, and adds Blogpost to the blogpost table
  */
-router.route("/add").post((req,res) =>{
+router.route("/add").post(async (req,res) =>{
     
     const postData = {
         title: req.body.title,
         author: req.body.author,
         content: req.body.content,
         category: req.body.category,
+        secret: req.body.secret,
     }
 
-    const newPost = new Post({
-        title: postData.title,
-        author: postData.author,
-        content: postData.content,
-        category: postData.category,
-    })
+    const isValid = await isValidKey(postData.secret);
 
-    newPost.save()
-        .then(() => res.json("Blogpost Added added!"))
-        .catch(err => res.status(400).json('Error: '+ err));
+    if(isValid == true){
+
+
+        const newPost = new Post({
+            title: postData.title,
+            author: postData.author,
+            content: postData.content,
+            category: postData.category,
+        })
+    
+        
+    
+        newPost.save()
+            .then(() => res.json("Blogpost Added added!"))
+            .catch(err => res.status(400).json('Error: '+ err));
+    }
+    else {
+        res.json("Invalid Secret");
+    }
+
+    
 
 
 
@@ -54,16 +82,30 @@ router.route("/:id").get((req,res) =>{
         .catch(err => res.status(400).json('Error: '+ err));
 } );
 
-router.route("/:id").delete((req,res) =>{
-    Post.findByIdAndDelete(req.params.id)
+router.route("/:id").delete(async (req,res) =>{
+
+    const isValid = await isValidKey(req.body.secret);
+    console.log("Delete Operation: Key Validity : "+isValid)
+    if(isValid == true){
+        Post.findByIdAndDelete(req.params.id)
         .then(() => res.json("Post Removed"))
         .catch(err => res.status(400).json('Error: '+ err));
+    }
+    else {
+        res.json("Invalid Secret");
+    }
+
+    
 } );
 
 
-router.route("/update/:id").post((req,res) =>{
+router.route("/update/:id").post(async (req,res) =>{
     
-    const id = req.params.id;
+
+    const isValid = await isValidKey(req.body.secret);
+
+    if(isValid == true){
+        const id = req.params.id;
 
     const postData = {
         title: req.body.title,
@@ -86,10 +128,30 @@ router.route("/update/:id").post((req,res) =>{
                 .then( () => res.json("Post updated") )
                 .catch(err => res.status(400).json('Error: '+ err));
         })
+    }
+    else {
+        res.json("Invalid Secret");
+    }
+
+
+
+    
 
 
 
 } );
+
+
+
+
+
+
+
+
+async function isValidKey(key) {
+    const valid = await User.exists({ secret: key })
+    return valid;
+}
 
 
 

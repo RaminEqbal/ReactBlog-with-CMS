@@ -11,10 +11,20 @@ class DeletePost extends React.Component {
 
         this.state = {
             postList: [],
+            secret: '',
         }
 
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleChange = this.handleChange.bind(this);
         this.reload = this.reload.bind(this);
+    }
+
+
+    handleChange(event) {
+      const name = event.target.name;
+      this.setState({
+          [name]: event.target.value,
+      });
     }
 
 
@@ -35,7 +45,6 @@ class DeletePost extends React.Component {
       }
 
       reload() {
-        console.log("Reload called")
         this.setState(this.state);
         this.forceUpdate();
         this.componentDidMount();
@@ -53,11 +62,15 @@ class DeletePost extends React.Component {
 
     render(){
         var renderPost = this.state.postList.map(item => {
-            return <PostSingle reload={this.reload} title={item.title} author={item.author} date={item.createdAt} postID={item._id} />
+            return <PostSingle secret={this.state.secret} reload={this.reload} title={item.title} author={item.author} date={item.createdAt} postID={item._id} />
           })
         return (
     <div className="post-form center-wrapper">    
     <h2>Delete Post</h2>
+    <label>
+        Secret<br />
+        <input className="single-input" name="secret" type="text" value={this.state.secret || ""} onChange={this.handleChange} />
+      </label>
     {renderPost}
     </div>
 

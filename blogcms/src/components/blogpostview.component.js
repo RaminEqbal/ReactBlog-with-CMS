@@ -35,7 +35,7 @@ class PostView extends React.Component {
     render(){
 
         var renderPost = this.state.data.map(item => {
-          return <Post title={item.title} author={item.author} date={item.createdAt}
+          return <Post title={item.title} author={item.author} date={item.createdAt} category={item.category}
           content={Parser(item.content)} />
         })
         return (

@@ -5,6 +5,16 @@
 }
 .post-title {
     text-align: center;
+   
+}
+
+.post-author {
+    color: var(--text-color-side);
+}
+
+
+.post-date {
+    color: var(--text-color-date);
 }
 
 .post-content ul {
@@ -33,6 +43,8 @@ box-shadow: 10px 10px 10px gray;
 
 .post-form textarea {
     height: 40vh;
+    box-sizing: border-box;
+    width:35vw;
 }
 
 
@@ -74,3 +86,4 @@ box-shadow: 10px 10px 10px gray;
     min-height: 30vh;
     border: 2px solid gray;
 }
+

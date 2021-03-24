@@ -14,7 +14,7 @@ class TopBar extends React.Component {
         return (
           
       <div className="blog-header">
-        <h1>Header</h1>
+        <h1>Ramin Eqbal</h1>
       </div>
   
   

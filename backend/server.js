@@ -52,6 +52,7 @@ server.use(express.json());
 
 const routeURL = {
     postAPI: process.env.POSTAPI_URL || "/posts",
+    authAPI: process.env.AUTHAPI_URL || "/login",
 }
 
 
@@ -59,7 +60,7 @@ const routeURL = {
 /**
  * Router Configuration
  */
-const postAPIRouter = require("./routes/post")
+const postAPIRouter = require("./routes/post");
 
 
 

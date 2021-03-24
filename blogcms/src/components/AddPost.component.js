@@ -11,6 +11,7 @@ class AddPost extends React.Component {
         super(props);
 
         this.state = {
+            secret: '',
             title: '',
             author: '',
             content: '',
@@ -46,6 +47,7 @@ class AddPost extends React.Component {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ 
+                secret: this.state.secret,
                 title: this.state.title,
                 author:  this.state.author,
                 content: this.state.content,
@@ -70,6 +72,12 @@ class AddPost extends React.Component {
       <form onSubmit={this.handleSubmit}>
       <div>
       <label>
+        Secret<br />
+        <input className="single-input" name="secret" type="text" value={this.state.secret || ""} onChange={this.handleChange} />
+      </label>
+      </div>
+      <div>
+      <label>
         Title<br />
         <input className="single-input" name="title" type="text" value={this.state.title || ""} onChange={this.handleChange} />
       </label>
@@ -88,11 +96,11 @@ class AddPost extends React.Component {
       </label>
       </div>
 
-
+      <div className="even-grid">
       <div>
       <label>
         ContentHTML<br />
-        <textarea className="single-input" name="content" type="text" value={this.state.content || ""} onChange={this.handleChange} />
+        <textarea name="content" type="text" value={this.state.content || ""} onChange={this.handleChange} />
       </label>
       </div>
 
@@ -102,7 +110,7 @@ class AddPost extends React.Component {
         <div className="post-date">{new Date().toDateString()}</div>
           {Parser(this.state.content)}
       </div>
-      
+      </div>
       
       
       <div className="center-wrapper"><input className="bottom-margin button-submit" type="submit" value="Submit" /></div>

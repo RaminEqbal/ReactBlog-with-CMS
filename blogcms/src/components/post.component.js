@@ -18,6 +18,7 @@ class Post extends React.Component {
         <h3 className="post-title">{this.props.title}</h3>
         <div className="post-author">by {this.props.author}</div>
         <div className="post-date">{new Date(this.props.date).toDateString()}</div>
+        <div className="post-category">[{this.props.category.toString()}]</div>
         </div>
         <div className="post-content">
             {this.props.content}
