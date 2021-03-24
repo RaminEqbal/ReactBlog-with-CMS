@@ -1,0 +1,76 @@
+.post {
+    width: 80%;
+    margin:auto;
+    margin-bottom: 5vh;
+}
+.post-title {
+    text-align: center;
+}
+
+.post-content ul {
+    padding-left: 2vw;
+}
+
+
+
+.post-form {
+box-shadow: 10px 10px 10px gray;
+}
+
+.post-form h2 {
+    text-align:center;
+    margin-bottom: 3vh;
+}
+
+.post-form label {
+    margin-bottom: 3vh;
+}
+
+
+.single-input {
+    width: 50vw;
+}
+
+.post-form textarea {
+    height: 40vh;
+}
+
+
+
+.center-wrapper {
+    width:80%;
+    margin:auto;
+}
+
+
+.bottom-margin {
+    margin-bottom: 4vh;
+}
+
+
+.button-submit {
+    width: 10vw;
+    margin-top:3vh;
+    margin-left: auto;
+    color:white;
+    background-color: green;
+    border-radius: 10px;
+    box-shadow: 1px 1px 2px greenyellow;
+}
+
+
+
+.post-heading {
+    margin-bottom: 3vh;
+}
+
+.post-delete-grid {
+    display: grid; 
+    grid-template-columns: 80% 20%;
+}
+
+.post-add-preview {
+    width:100%;
+    min-height: 30vh;
+    border: 2px solid gray;
+}

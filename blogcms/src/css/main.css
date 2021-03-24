@@ -1,0 +1,58 @@
+
+
+* {
+    margin:0;
+    padding:0;
+}
+
+
+
+
+
+
+.main-grid {
+
+    display: grid;
+    grid-template-columns: 30% 65%;
+    grid-gap: 5%;
+}
+
+
+.test {
+    background-color: black;
+    color:white;
+    border: 1px solid white;
+}
+
+
+.blog-header {
+    
+    margin-bottom: 2vh;
+    height: 50px;
+}
+
+.blog-header h1 {
+    padding: 2vh;
+    margin:auto;
+}
+
+
+.boxed {
+    border: 2px solid gray;
+    box-shadow: 2px 2px 2px gray;
+}
+
+
+.main-collection {
+
+    height:calc(100vh - 70px);
+    overflow-y: scroll;
+}
+
+.main-collection>*{
+    padding-left: 2vw;
+}
+
+.main-collection ul {
+    list-style: none;
+}
