@@ -1,6 +1,7 @@
 import React from 'react';
 import Parser from 'html-react-parser'
 
+import Post from './post.component'
 
 
 import globals from '../const';
@@ -105,10 +106,8 @@ class AddPost extends React.Component {
       </div>
 
       <div className="post-add-preview">
-      <h3 className="post-title">{this.state.title}</h3>
-        <div className="post-author">{this.state.author}</div>
-        <div className="post-date">{new Date().toDateString()}</div>
-          {Parser(this.state.content)}
+      <Post title={this.state.title} category={this.state.category} author={this.state.author} date={new Date().toDateString()}
+      content={Parser(this.state.content)} />
       </div>
       </div>
       
