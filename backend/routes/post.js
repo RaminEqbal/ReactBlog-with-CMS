@@ -18,10 +18,42 @@ let User = require("../model/user.model");
  * Get all Blogposts
  */
 router.route("/").get((req,res) =>{
-    Post.find()
+    Post.find( {
+        release: true,
+    } )
     .then(posts => res.json(posts))
     .catch(err => res.status(400).json('Error: '+ err));
 });
+
+
+
+router.route("/all/get").post(async (req,res) =>{
+    
+    const postData = {
+        secret: req.body.secret,
+    }
+
+    const isValid = await isValidKey(postData.secret);
+
+    if(isValid == true){
+        Post.find()
+        .then(posts => res.json(posts))
+        .catch(err => res.status(400).json('Error: '+ err));
+    }
+    else {
+        res.json("Invalid Secret");
+    }
+
+    
+
+
+
+} );
+
+
+
+
+
 
 router.route("/collections").get(async (req,res) =>{
     Post.find({},{category:1, _id:0})

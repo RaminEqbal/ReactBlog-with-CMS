@@ -1,6 +1,8 @@
 :root {
     --background-color: rgb(31, 31, 31);
+    --background-light: rgb(59, 59, 59);
     --text-color:white;
+    --text-black: black;
     --text-color-side: rgb(177, 184, 209);
     --text-color-date:  rgb(124, 132, 165);
 

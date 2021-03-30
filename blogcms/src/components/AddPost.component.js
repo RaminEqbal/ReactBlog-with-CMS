@@ -74,26 +74,26 @@ class AddPost extends React.Component {
       <div>
       <label>
         Secret<br />
-        <input className="single-input" name="secret" type="text" value={this.state.secret || ""} onChange={this.handleChange} />
+        <input className="single-input dark-input" name="secret" type="text" value={this.state.secret || ""} onChange={this.handleChange} />
       </label>
       </div>
       <div>
       <label>
         Title<br />
-        <input className="single-input" name="title" type="text" value={this.state.title || ""} onChange={this.handleChange} />
+        <input className="single-input dark-input" name="title" type="text" value={this.state.title || ""} onChange={this.handleChange} />
       </label>
       </div>
       <div>
       <label>
         Author<br />
-        <input className="single-input" name="author" type="text" value={this.state.author || ""} onChange={this.handleChange} />
+        <input className="single-input dark-input" name="author" type="text" value={this.state.author || ""} onChange={this.handleChange} />
       </label>
       </div>
 
       <div>
       <label>
         Category<br />
-        <input className="single-input" name="category" type="text" value={this.state.category || ""} onChange={this.handleChange} />
+        <input className="single-input dark-input" name="category" type="text" value={this.state.category || ""} onChange={this.handleChange} />
       </label>
       </div>
 
@@ -101,7 +101,7 @@ class AddPost extends React.Component {
       <div>
       <label>
         ContentHTML<br />
-        <textarea name="content" type="text" value={this.state.content || ""} onChange={this.handleChange} />
+        <textarea className="dark-input padded-input" name="content" type="text" value={this.state.content || ""} onChange={this.handleChange} />
       </label>
       </div>
 

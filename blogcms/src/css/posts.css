@@ -41,6 +41,17 @@ box-shadow: 10px 10px 10px gray;
     width: 50vw;
 }
 
+.dark-input {
+    background-color: var(--background-light);
+    color: white;
+}
+
+
+.padded-input {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
 .post-form textarea {
     height: 40vh;
     box-sizing: border-box;
